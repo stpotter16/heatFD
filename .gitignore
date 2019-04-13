@@ -1,0 +1,17 @@
+aclocal.m4
+compile
+configure
+install-sh
+missing
+depcomp
+test-driver
+config.status
+Makefile
+config.h
+stamp-h1
+.deps
+*.dat
+!input.dat
+!1d2ndinput.dat
+heatFD
+inputs/

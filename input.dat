@@ -1,0 +1,61 @@
+#-*-getpot-*-
+#
+#----------------------------------------------------------------------------------------
+# Input file for heat equation solver project
+#----------------------------------------------------------------------------------------
+#
+#-------------------------------------------
+# Global input variables
+#-------------------------------------------
+
+#-------------------------------------------
+# Solver control section
+#-------------------------------------------
+
+[solver]
+method = 'Gauss-Seidel' # String. Specify iterative method. Default is GS: Gauss-Seidel. Acceptable options are {Gauss-Seidel, Jacobi}
+iter_max = 100000000 # Integer. Specify maximum number of iterations for the solver to execute
+tol = 1e-14 # Double. Exit tolerance for iterative solver
+order = 2 # Integer. Order of Finite Difference approximation of governing equations. Default is 2. Acceptable options are {2, 4}
+
+#-------------------------------------------
+# Problem definition section
+#-------------------------------------------
+
+[problem]
+dimension = 2 # Integer.Controlling dimension of the problem. Default is 1 for 1D. Acceptable options are {1, 2}
+kappa = 1.0 # Double. Thermal conductivity of material. Assumed spatially homogeneous over problem domain.
+
+#nx = 10 # Integer. Number of finite difference nodes in the x direction
+n = 80 # Integer. Number of finite differenc nodes
+
+# xmin = 0.0 # Float. Minimum value of x in domain.
+# xmax = 1.0 # Float. Maximum value of x in domain.
+
+Txmin = 1.0 # Double. Temperature at x min point.
+Txmax = -1.0 # Double. Temperature at x max point.
+
+# ny = 10 # Integer. Number of finite diifferenc nodes in the y direction
+
+# ymin = 1.0 # Float. Minimum value of y in domain.
+# ymax = -1.0 # Float. Maximum value of y in domain.
+
+Tymin = 1.0 # Double. Temperature at y min boundary.
+Tymax = -1.0 # Double. Temperature at y max boundary.
+
+#-------------------------------------------
+# MASA control section
+# ------------------------------------------
+[MASA]
+Ax = 9.42777960769379 # Double. Ax value for MASA manufactured soln. Ax=3pi is a good default. Keep above 1pi
+By = 9.42777960769379 # Double. By value for MASA manufactured soln. By=3pi is a good default. Keep above 1pi
+
+#-------------------------------------------
+# Output control section
+# ------------------------------------------
+
+[output]
+verification = 1 # Integer. Boolean switch for controlling verification mode. (1=yes, 0=no). Default 0 for not running verification mode
+out_mode = 1 # Integer. Switch for controlling output verbosity (silent=0, standard=1, debug=2)
+timer = 1 # Integer. Switch for controlling whether or not to write execution time to output file. (1=yes, 0=no). Default 0 for not writing to file.
+out_file = './solns/2dsoln.h5' # String. Name of output file

@@ -1,0 +1,20 @@
+sudo: required
+language: C
+
+services:
+        - docker
+
+before_install:
+        - docker pull koomietx/class-ci:v1.0
+        - export DOCKER_RUN="docker run -v ${TRAVIS_BUILD_DIR}:/home/test koomietx/class-ci:v1.0"
+
+script:
+        - ${DOCKER_RUN} /bin/bash -l -c "module load hdf5 && autoreconf -f -i && ./configure && make && make check"
+
+after_failure:
+        - cd test
+        - ls -l
+        - cat ./test/test-suite.log
+
+notifications:
+        email: false
